@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>树木认养</title>
+<style>
+  *{margin:0;padding:0;box-sizing:border-box;font-family:system-ui, -apple-system, "Microsoft YaHei", sans-serif}
+  body{background:#f5f5f0;padding:20px;max-width:600px;margin:0 auto}
+  .box{background:#fff;border-radius:16px;box-shadow:0 4px 20px rgba(0,0,0,0.05);padding:30px;margin-bottom:20px}
+  .title{font-size:26px;color:#2d5a3d;text-align:center;margin-bottom:10px;font-weight:600}
+  .subtitle{color:#555;text-align:center;margin-bottom:30px;line-height:1.6}
+  input{width:100%;padding:14px 16px;border:1px solid #ddd;border-radius:10px;font-size:16px;margin-bottom:20px;outline:none}
+  input:focus{border-color:#2d5a3d}
+  .btn{width:100%;padding:15px;background:#2d5a3d;color:#fff;border:none;border-radius:10px;font-size:17px;font-weight:500;cursor:pointer}
+  .btn-pay{background:#1e7b45}
+  .info{margin:12px 0;font-size:16px;color:#333}
+  .price{font-size:30px;color:#c93a3a;font-weight:bold;text-align:center;margin:20px 0}
+  .hide{display:none}
+</style>
+</head>
+<body>
+
+<!-- 认养页面 -->
+<div id="page1" class="box">
+  <div class="title">树木认养</div>
+  <div class="subtitle">认养一棵树木，守护一片绿色<br>传承生态文明，留下美好纪念</div>
+
+  <input type="text" id="userName" placeholder="请输入认养人姓名">
+
+  <button class="btn" onclick="toPay()">确认认养</button>
+</div>
+
+<!-- 支付页面 -->
+<div id="page2" class="box hide">
+  <div class="title">认养信息确认</div>
+
+  <div class="info">认养人：<span id="showName"></span></div>
+  <div class="info">认养项目：樱桃树认养</div>
+  <div class="info">认养金额：</div>
+  <div class="price">¥ 50.00</div>
+
+  <button class="btn btn-pay" onclick="doPay()">确认支付 50 元</button>
+</div>
+
+<script>
+function toPay() {
+  let name = document.getElementById('userName').value.trim()
+  if (!name) {
+    alert('请填写认养人姓名')
+    return
+  }
+  document.getElementById('showName').innerText = name
+  document.getElementById('page1').classList.add('hide')
+  document.getElementById('page2').classList.remove('hide')
+}
+
+function doPay() {
+  alert('支付成功！\n认养人：' + document.getElementById('showName').innerText + '\n金额：50 元')
+}
+</script>
+</body>
+</html>
